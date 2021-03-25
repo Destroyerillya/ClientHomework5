@@ -14,8 +14,8 @@ namespace Client
         static bool flager = true;
         static void Main(string[] args)
         {
-            ipAddress = IPAddress.Parse("127.0.0.1");
-            remotePort = Int32.Parse("8080");
+            ipAddress = IPAddress.Loopback;
+            remotePort = 8080;
             Console.WriteLine("Для отправки сообщений введите сообщение и нажмите Enter");
             Console.WriteLine();
 
@@ -58,7 +58,7 @@ namespace Client
         {
             try
             {
-                IPEndPoint localIP = new IPEndPoint(IPAddress.Parse("0.0.0.0"), 0);
+                IPEndPoint localIP = new IPEndPoint(IPAddress.Any, 0);
                 listeningSocket.Bind(localIP);
 
                 while (flager)
